@@ -79,15 +79,14 @@ nav.menu a:hover{border-color:currentColor}
 .iconbtn:active{transform:scale(.92)}
 .iconbtn.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .badge-n{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--ok);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;padding:0 4px}
-.ftoggle{display:none}
+.navbar:not(.open) .row.extra{display:none}
+.navbar{transition:transform .25s ease}
+.navbar.away{transform:translateY(calc(-100% - 10px))}
 .row.topics{flex-wrap:wrap;overflow:visible}
 .soundswrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .soundswrap .row{flex-wrap:wrap;overflow:visible}
 @media (max-width:700px){
-  .ftoggle{display:inline-grid}
-  .navbar:not(.open) .row.extra{display:none}
-  .navbar{gap:8px;padding-block:10px;transition:transform .25s ease}
-  .navbar.away{transform:translateY(calc(-100% - 10px))}
+  .navbar{gap:8px;padding-block:10px}
   .row.topics .chip{padding:6px 12px;font-size:13px;min-height:38px}
   .row.topics .chip .n{display:none}
   .soundswrap .flabel{width:100%}
@@ -142,10 +141,12 @@ nav.menu a:hover{border-color:currentColor}
 @media (hover:hover){ .card:hover{transform:translateY(-3px);box-shadow:0 1px 0 rgba(30,42,138,.04),0 18px 34px -20px rgba(30,42,138,.45)} .card:hover .cover img{transform:scale(1.03)} }
 .cover img{transition:transform .35s ease}
 .card-body{display:block;padding-inline:6px}
-.card-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-inline:6px;margin-top:auto;flex-wrap:wrap}
+.card-foot{display:flex;flex-direction:column;align-items:stretch;gap:10px;padding-inline:6px;margin-top:auto}
 .card-foot .price{margin:0;font-size:15px}
 .price.is-free{color:var(--ok)}
-.acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.acts{display:flex;gap:6px;align-items:center;justify-content:space-between}
+.act{flex:none}
+.act.add,.act.get{flex:1 1 auto;justify-content:center}
 .act{border:0;border-radius:999px;min-height:40px;padding:9px 15px;font:inherit;font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;cursor:pointer;white-space:nowrap}
 .act.ghost{background:transparent;color:var(--ink-soft);padding-inline:10px}
 .act.ghost:hover{color:var(--accent)}
@@ -170,7 +171,7 @@ button,a.act,.chip,.pill{-webkit-tap-highlight-color:transparent}
 .cartbar .big-btn{padding:11px 18px;white-space:nowrap}
 body.has-bar .toast{bottom:calc(86px + env(safe-area-inset-bottom,0px))}
 body.has-bar footer{padding-bottom:110px}
-@media (max-width:420px){ .cartbar{padding-left:16px;font-size:13px} .cartbar .big-btn{padding:10px 14px;font-size:13px} .acts{width:100%;justify-content:space-between} .act.add,.act.get{flex:1;justify-content:center} }
+@media (max-width:420px){ .cartbar{padding-left:16px;font-size:13px} .cartbar .big-btn{padding:10px 14px;font-size:13px} }
 button.get{border:0;font:inherit;font-size:13px;font-weight:600}
 .logos-note{margin:0;background:var(--chip);border-radius:16px;padding:10px 14px;font-size:14px}
 .player{position:fixed;inset:0;z-index:40;background:var(--bg);display:flex;flex-direction:column}
@@ -719,9 +720,9 @@ try { const nb=$('#navbar'); new IntersectionObserver(([en])=>nb.classList.toggl
 let lastY = scrollY;
 addEventListener('scroll', () => {
   const nb = $('#navbar'), y = scrollY;
-  if (innerWidth > 700 || nb.classList.contains('open') || !$('#searchbox').hidden) { nb.classList.remove('away'); lastY = y; return; }
+  if (!$('#searchbox').hidden) { nb.classList.remove('away'); lastY = y; return; }
   const top = $('#sections').getBoundingClientRect().top + scrollY;
-  if (y > lastY + 8 && y > top) nb.classList.add('away');
+  if (y > lastY + 8 && y > top) { nb.classList.add('away'); if (nb.classList.contains('open')) { nb.classList.remove('open'); renderNav(); } }
   else if (y < lastY - 8) nb.classList.remove('away');
   lastY = y;
 }, {passive:true});
