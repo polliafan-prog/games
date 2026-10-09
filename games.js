@@ -4,7 +4,7 @@
 window.SETTINGS = {
   // Адрес посредника Google, через который заявки приходят в Telegram.
   // Вставьте сюда ссылку вида https://script.google.com/macros/s/.../exec
-  orderUrl: 'https://script.google.com/macros/s/AKfycbxuz1FZn8kPKz0tPcHH51_doDirEvSw7RjnsPjNJ54UQZaNJyVFw3m1mI7fspecFR1t/exec',
+  orderUrl: 'https://script.google.com/macros/s/AKfycbzJGRzE_QsM_ajK6ni85LW_i5MpdM8G_oM4SGTyJ2sx0oPhNVYbkCgfv_7uPaW9dBOP/exec',
 
   // Токен бота теперь хранится в скрипте Google, здесь его указывать не нужно.
   telegramBotToken: ['', ''],
