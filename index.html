@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Каталог логопедических игр</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&family=Montserrat:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: cream page, rounded white game cards in a 3/2/1 grid, cobalt accent, notes drawer on the right */
+:root{
+  --bg:#FBF4EA;          /* cream page */
+  --card:#FFFFFF;
+  --ink:#1E2A8A;         /* cobalt text */
+  --ink-soft:#5A63A8;
+  --accent:#2F3FD0;      /* cobalt accent */
+  --accent-ink:#FFFFFF;
+  --line:#EADFCF;
+  --chip:#F3EADC;
+  --ok:#2E8B57;
+  --shadow:0 1px 0 rgba(30,42,138,.04),0 10px 30px -18px rgba(30,42,138,.35);
+  --display:"Forum","Times New Roman",serif;
+  --body:"Montserrat","Segoe UI",system-ui,sans-serif;
+  /* cover tints */
+  --t-leaf:#F6D9B8; --t-pink:#F7D6E0; --t-blue:#CFE0F4; --t-farm:#D9EBC4;
+  --t-cave:#D8D2F0; --t-planet:#CDEBDD; --t-lake:#CFE8EC; --t-snow:#DCE3F2;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141833; --card:#1D2246; --ink:#EEF0FF; --ink-soft:#A9B0E6; --accent:#7C8BFF; --accent-ink:#0E1230;
+  --line:#2C3263; --chip:#262C5A; --ok:#6BD39A; --shadow:0 10px 30px -18px rgba(0,0,0,.7);
+  --t-leaf:#5A4330; --t-pink:#5B3A4A; --t-blue:#2E4466; --t-farm:#3A5233; --t-cave:#3F3A68; --t-planet:#2E5246; --t-lake:#2C4E57; --t-snow:#38415E;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141833; --card:#1D2246; --ink:#EEF0FF; --ink-soft:#A9B0E6; --accent:#7C8BFF; --accent-ink:#0E1230;
+  --line:#2C3263; --chip:#262C5A; --ok:#6BD39A; --shadow:0 10px 30px -18px rgba(0,0,0,.7);
+  --t-leaf:#5A4330; --t-pink:#5B3A4A; --t-blue:#2E4466; --t-farm:#3A5233; --t-cave:#3F3A68; --t-planet:#2E5246; --t-lake:#2C4E57; --t-snow:#38415E;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;padding-inline:clamp(16px,4vw,48px)}
+.wrap{max-width:1180px;margin:0 auto}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;letter-spacing:.01em}
+.label{font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase}
+
+/* header */
+header.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-mark{width:46px;height:46px;border-radius:50% 50% 50% 14px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--display);font-size:24px}
+.brand-name{font-family:var(--display);font-size:22px;line-height:1.05}
+.brand-name small{display:block;font-family:var(--body);font-size:11px;letter-spacing:.08em;color:var(--ink-soft);text-transform:uppercase}
+nav.menu{display:flex;gap:clamp(14px,3vw,34px);align-items:center;flex-wrap:wrap}
+nav.menu a{text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding-block:4px;border-bottom:1.5px solid transparent}
+nav.menu a:hover{border-color:currentColor}
+.notes-btn{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--accent);background:transparent;border-radius:999px;padding:8px 16px;font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;box-shadow:0 3px 0 var(--accent)}
+.notes-btn .count{min-width:22px;height:22px;border-radius:99px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-size:12px;letter-spacing:0}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:end;padding-block:28px 40px}
+.hero h1{font-size:clamp(38px,6vw,72px);line-height:.98}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{max-width:46ch;color:var(--ink-soft);margin:0}
+.hero-side{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.facts{display:flex;gap:10px;flex-wrap:wrap}
+.fact{background:var(--chip);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:500}
+
+/* catalog head */
+.cat-title{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:18px}
+.navbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);padding-block:12px;margin-inline:-8px;padding-inline:8px;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--line);margin-bottom:22px}
+.navbar.stuck{box-shadow:0 10px 20px -18px rgba(30,42,138,.6)}
+.search{display:flex;gap:8px;align-items:center}
+.search input{border-radius:999px;padding:10px 18px;font-size:16px;flex:1;min-width:0}
+.search input::-webkit-search-cancel-button{display:none}
+.iconbtn{flex:none;width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);display:inline-grid;place-items:center;position:relative;cursor:pointer;padding:0;font-size:16px;transition:transform .12s, background .15s}
+.iconbtn:active{transform:scale(.92)}
+.iconbtn.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.badge-n{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--ok);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;padding:0 4px}
+.ftoggle{display:none}
+.row.topics{flex-wrap:wrap;overflow:visible}
+.soundswrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.soundswrap .row{flex-wrap:wrap;overflow:visible}
+@media (max-width:700px){
+  .ftoggle{display:inline-grid}
+  .navbar:not(.open) .row.extra{display:none}
+  .navbar{gap:8px;padding-block:10px;transition:transform .25s ease}
+  .navbar.away{transform:translateY(calc(-100% - 10px))}
+  .row.topics .chip{padding:6px 12px;font-size:13px;min-height:38px}
+  .row.topics .chip .n{display:none}
+  .soundswrap .flabel{width:100%}
+}
+}
+.row{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.row::-webkit-scrollbar{display:none}
+.row.extra{flex-wrap:wrap;overflow:visible;align-items:center;gap:10px 14px}
+.row .chip{flex:none;white-space:nowrap}
+.chip .n{opacity:.6;font-variant-numeric:tabular-nums;margin-left:4px}
+.row.sub .chip{padding:5px 13px;font-size:13px;min-width:44px}
+.seg2{display:inline-flex;background:var(--chip);border-radius:999px;padding:3px;gap:2px;flex-wrap:wrap}
+.pill{border:0;background:transparent;border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:600}
+.pill[aria-pressed="true"]{background:var(--card);color:var(--accent);box-shadow:0 1px 4px rgba(30,42,138,.15)}
+.reset{border:0;background:transparent;color:var(--accent);font-size:13px;font-weight:600;text-decoration:underline;padding:6px 4px}
+.sec{margin-bottom:44px;scroll-margin-top:200px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(28px,3.4vw,38px);line-height:1}
+.sec-head .more{border:0;background:transparent;color:var(--accent);font-weight:600;font-size:13px;padding:4px}
+.intro{padding-block:clamp(28px,4vw,48px) 0}
+.how .steps{margin-top:0}
+.hero-cta{display:inline-block;text-decoration:none}
+.about .photo{max-width:320px}
+.blob{background:var(--accent);color:var(--accent-ink);border-radius:50%;padding:22px 40px;transform:rotate(-6deg);font-family:var(--display);font-size:clamp(28px,3.6vw,40px);line-height:.95;text-align:center;text-transform:uppercase;margin-left:12px}
+
+.chip{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:7px 16px;font-size:13px;font-weight:500}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,30px);padding-top:4px}
+.card{background:var(--card);border-radius:34px;padding:14px 14px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px;min-width:0}
+.cover{position:relative;border-radius:24px;aspect-ratio:4/3;overflow:hidden;cursor:pointer;border:0;padding:0;width:100%;display:block;background:var(--tint)}
+.cover img,.cover video{width:100%;height:100%;object-fit:cover;display:block}
+.cover .art{position:absolute;inset:0}
+.cover .glyph{position:absolute;left:22px;bottom:4px;font-family:var(--display);font-size:clamp(70px,9vw,118px);line-height:1;color:var(--ink);opacity:.82}
+.cover .glyph small{font-size:.32em;display:block;font-family:var(--body);font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.8;margin-bottom:6px}
+.badges{position:absolute;top:12px;left:12px;display:flex;gap:6px;flex-wrap:wrap}
+.badge{background:var(--card);border-radius:99px;padding:3px 10px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.badge.free{background:var(--ok);color:var(--card)}
+.play-ico{position:absolute;right:12px;bottom:12px;width:36px;height:36px;border-radius:50%;background:var(--card);display:grid;place-items:center}
+.card-body{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding-inline:6px}
+.card-body h3{font-family:var(--body);font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;line-height:1.3}
+.card-body .sub{font-size:13px;color:var(--ink-soft);margin-top:4px}
+.price{font-size:14px;font-weight:600;margin-top:6px;font-variant-numeric:tabular-nums}
+.add{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--chip);display:grid;place-items:center;font-size:22px;line-height:1;transition:transform .15s}
+.add:hover{transform:scale(1.07)}
+.add[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.get{flex:none;align-self:center;border-radius:999px;background:var(--ok);color:var(--card);padding:10px 16px;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:.03em}
+.get:hover{filter:brightness(1.08)}
+.big-btn.get-big{text-align:center;text-decoration:none;background:var(--ok);color:var(--card)}
+.card{cursor:pointer;transition:transform .18s ease, box-shadow .18s ease}
+@media (hover:hover){ .card:hover{transform:translateY(-3px);box-shadow:0 1px 0 rgba(30,42,138,.04),0 18px 34px -20px rgba(30,42,138,.45)} .card:hover .cover img{transform:scale(1.03)} }
+.cover img{transition:transform .35s ease}
+.card-body{display:block;padding-inline:6px}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-inline:6px;margin-top:auto;flex-wrap:wrap}
+.card-foot .price{margin:0;font-size:15px}
+.price.is-free{color:var(--ok)}
+.acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.act{border:0;border-radius:999px;min-height:40px;padding:9px 15px;font:inherit;font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;cursor:pointer;white-space:nowrap}
+.act.ghost{background:transparent;color:var(--ink-soft);padding-inline:10px}
+.act.ghost:hover{color:var(--accent)}
+.act.add{background:var(--accent);color:var(--accent-ink)}
+.act.add.on{background:var(--chip);color:var(--accent)}
+.act.get{background:var(--ok);color:#fff}
+button,a.act,.chip,.pill{-webkit-tap-highlight-color:transparent}
+.act,.chip,.pill,.big-btn,.notes-btn,.more,.close{transition:transform .12s ease, background-color .15s, color .15s, box-shadow .15s}
+.act:active,.chip:active,.pill:active,.big-btn:active,.notes-btn:active,.more:active,.close:active{transform:scale(.95)}
+.chip{min-height:40px;display:inline-flex;align-items:center;cursor:pointer}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]::before{content:"✓";margin-right:6px;font-weight:700}
+.fgroup{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.flabel{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);flex:none}
+.pill{min-height:34px;cursor:pointer}
+.pill:hover{color:var(--accent)}
+.pill[aria-pressed="true"]::before{content:"✓ "}
+.sec-head .more{background:var(--chip);border-radius:999px;padding:9px 16px;min-height:40px}
+.toast{display:flex;align-items:center;gap:14px}
+.toast-btn{border:0;background:transparent;color:var(--bg);font-weight:700;text-decoration:underline;font-size:14px;padding:4px}
+.cartbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;width:min(560px,calc(100vw - 24px));background:var(--card);border-radius:999px;box-shadow:0 14px 40px -12px rgba(14,18,48,.45);padding:8px 8px 8px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px}
+.cartbar .big-btn{padding:11px 18px;white-space:nowrap}
+body.has-bar .toast{bottom:calc(86px + env(safe-area-inset-bottom,0px))}
+body.has-bar footer{padding-bottom:110px}
+@media (max-width:420px){ .cartbar{padding-left:16px;font-size:13px} .cartbar .big-btn{padding:10px 14px;font-size:13px} .acts{width:100%;justify-content:space-between} .act.add,.act.get{flex:1;justify-content:center} }
+button.get{border:0;font:inherit;font-size:13px;font-weight:600}
+.logos-note{margin:0;background:var(--chip);border-radius:16px;padding:10px 14px;font-size:14px}
+.player{position:fixed;inset:0;z-index:40;background:var(--bg);display:flex;flex-direction:column}
+.player-bar{display:flex;align-items:center;gap:12px;padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px;border-bottom:1px solid var(--line)}
+.player-bar b{flex:1;min-width:0;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.player-bar .close{position:static;margin:0}
+.player iframe{flex:1;width:100%;border:0;background:#000}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:50;background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:14px;font-size:14px;max-width:calc(100vw - 32px)}
+.empty{grid-column:1/-1;text-align:center;color:var(--ink-soft);padding:40px}
+
+/* sections */
+section.block{padding-block:clamp(56px,8vw,96px) 0}
+.about{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);align-items:center}
+.photo{aspect-ratio:4/5;border-radius:50% 50% 34px 34px;background:var(--t-pink);display:grid;place-items:center;color:var(--ink-soft);font-size:13px;text-align:center;padding:0;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.about h2,.steps-head h2{font-size:clamp(34px,4.5vw,52px);line-height:1;margin-bottom:18px}
+.about p{max-width:60ch;margin:0 0 12px}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:8px}
+.step{background:var(--card);border-radius:28px;padding:22px;box-shadow:var(--shadow)}
+.step .n{font-family:var(--display);font-size:44px;color:var(--accent);line-height:1}
+.step h3{font-family:var(--body);font-size:15px;font-weight:700;margin:8px 0 6px}
+.step p{margin:0;color:var(--ink-soft);font-size:14px}
+
+footer{margin-top:clamp(56px,8vw,96px);border-top:1px solid var(--line);padding-block:36px 48px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px}
+footer h2{font-size:clamp(28px,3.5vw,40px);line-height:1.05}
+.contact-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+.contact-line b{font-weight:600;font-variant-numeric:tabular-nums}
+.mini{border:1px solid var(--line);background:transparent;border-radius:99px;padding:3px 10px;font-size:12px}
+
+/* modal + drawer */
+.scrim{position:fixed;inset:0;background:rgba(14,18,48,.45);z-index:20}
+.modal{position:fixed;z-index:21;left:50%;top:50%;transform:translate(-50%,-50%);width:min(860px,calc(100vw - 32px));max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);overflow:auto;background:var(--card);border-radius:30px;padding:clamp(18px,3vw,30px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px}
+.gallery{display:flex;flex-direction:column;gap:10px;min-width:0}
+.gallery .main{border-radius:22px;aspect-ratio:4/3;overflow:hidden;background:var(--tint);position:relative}
+.gallery .main img,.gallery .main video{width:100%;height:100%;object-fit:cover;display:block}
+.thumbs{display:flex;gap:8px;overflow-x:auto}
+.thumbs button{flex:none;width:64px;height:48px;border-radius:10px;overflow:hidden;border:2px solid transparent;padding:0;background:var(--chip)}
+.thumbs button[aria-current="true"]{border-color:var(--accent)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.m-info{display:flex;flex-direction:column;gap:12px;min-width:0}
+.m-info h2{font-size:clamp(30px,4vw,42px);line-height:1}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tags span{background:var(--chip);border-radius:99px;padding:3px 10px;font-size:12px;font-weight:500}
+.m-info ul{margin:0;padding-left:18px}
+.m-info li{margin-bottom:4px}
+.big-btn{border:0;border-radius:999px;background:var(--accent);color:var(--accent-ink);padding:13px 22px;font-weight:600;font-size:14px;letter-spacing:.03em}
+.big-btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--accent)}
+.close{position:sticky;top:0;z-index:3;width:44px;height:44px;border-radius:50%;border:0;background:var(--accent);color:var(--accent-ink);font-size:24px;line-height:1;display:grid;place-items:center;flex:none;box-shadow:0 4px 14px -4px rgba(0,0,0,.35)}
+.modal>.close{grid-column:1/-1;justify-self:end;margin-bottom:-56px}
+.drawer>.close{align-self:flex-end;margin-bottom:-52px}
+.close-row{display:none}
+
+.drawer{position:fixed;z-index:21;top:0;right:0;bottom:0;width:min(440px,100vw);background:var(--bg);padding:calc(22px + env(safe-area-inset-top,0px)) 22px calc(22px + env(safe-area-inset-bottom,0px));overflow:auto;display:flex;flex-direction:column;gap:16px;box-shadow:-20px 0 40px -20px rgba(0,0,0,.3)}
+.drawer h2{font-size:38px;line-height:1}
+.n-item{display:flex;gap:12px;align-items:center;background:var(--card);border-radius:20px;padding:10px}
+.n-item .sw{width:52px;height:52px;border-radius:14px;flex:none;background:var(--tint);display:grid;place-items:center;font-family:var(--display);font-size:26px;overflow:hidden}
+.n-item .sw img{width:100%;height:100%;object-fit:cover}
+.n-item .t{flex:1;min-width:0;font-weight:600;font-size:14px}
+.n-item .t small{display:block;font-weight:500;color:var(--ink-soft)}
+.rm{border:0;background:transparent;font-size:20px;color:var(--ink-soft);width:34px;height:34px;border-radius:50%}
+.total{display:flex;justify-content:space-between;font-weight:700;font-variant-numeric:tabular-nums;padding-inline:4px}
+form{display:flex;flex-direction:column;gap:12px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+input,textarea,select{font:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:11px 13px;width:100%}
+textarea{min-height:76px;resize:vertical}
+.seg{display:flex;gap:8px}
+.seg label{flex:1;text-transform:none;letter-spacing:0;font-size:14px;font-weight:500;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:10px;display:flex;gap:6px;align-items:center;justify-content:center;cursor:pointer}
+.seg input{width:auto}
+.seg label:has(input:checked){border-color:var(--accent)}
+.err{color:#C2384E;font-size:13px;margin:0}
+.msg{white-space:pre-wrap;background:var(--card);border:1.5px dashed var(--line);border-radius:16px;padding:14px;font-size:13px;user-select:all}
+.send-row{display:flex;flex-direction:column;gap:10px}
+.send-row a{text-align:center;text-decoration:none}
+.hint{font-size:13px;color:var(--ink-soft);margin:0}
+
+@media (max-width:900px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero{grid-template-columns:1fr}
+  .modal{grid-template-columns:1fr;left:0;top:0;right:0;bottom:0;transform:none;width:100%;max-height:none;border-radius:0;padding:calc(14px + env(safe-area-inset-top,0px)) 16px calc(20px + env(safe-area-inset-bottom,0px))}
+  .close-row{display:block}
+  footer{grid-template-columns:1fr 1fr}
+  footer>div:first-child{grid-column:1/-1}
+}
+@media (max-width:600px){
+  .grid,.steps{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr}
+  .photo{max-width:280px}
+  footer{grid-template-columns:1fr}
+  nav.menu a.hide-sm{display:none}
+  .navbar{margin-inline:-16px;padding-inline:16px}
+  .about .photo{max-width:220px;aspect-ratio:1}
+  .blob{padding:20px 34px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top" aria-label="На главную">
+      <span class="brand-mark">Л</span>
+      <span class="brand-name">Логоигры<small>тгк @polliafania</small></span>
+    </a>
+    <nav class="menu">
+      <a href="#how" class="hide-sm">Как заказать</a>
+      <a href="#catalog">Каталог</a>
+      <a href="#about" class="hide-sm">Обо мне</a>
+      <button class="notes-btn" id="openNotes" type="button">Заметки <span class="count" id="notesCount">0</span></button>
+    </nav>
+  </header>
+
+  <section class="hero" id="top">
+    <h1>Игры для <em>логопедических</em> занятий</h1>
+    <div class="hero-side">
+      <a class="big-btn hero-cta" href="#catalog">Смотреть каталог</a>
+      <p>Игры и рабочие листы для автоматизации звуков, слоговой структуры и артикуляционной гимнастики. Браузерные игры открываются на компьютере, планшете и телефоне, игры в PowerPoint работают в презентации, рабочие листы можно распечатать.</p>
+    </div>
+  </section>
+
+
+  <section class="intro how" id="how">
+    <div class="steps-head"><span class="label">Как заказать</span><h2>Три шага до игры</h2></div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Добавьте игры в заметки</h3><p>Нажмите «+» на карточке платной игры. Бесплатные игры забирайте сразу кнопкой «Забрать».</p></div>
+      <div class="step"><div class="n">2</div><h3>Заполните короткую форму</h3><p>Имя, кто вы (логопед или родитель) и как с вами связаться.</p></div>
+      <div class="step"><div class="n">3</div><h3>Отправьте заявку</h3><p>Заявка сразу придёт мне в Telegram. Я напишу вам и пришлю игру.</p></div>
+    </div>
+  </section>
+
+  <section id="catalog" class="block">
+    <div class="cat-title"><div class="blob">Каталог<br>игр</div><p class="hint" id="catCount"></p></div>
+    <div class="navbar" id="navbar">
+      <div class="search" id="searchbox" hidden><input id="q" type="search" placeholder="Название, звук, «бродилка»…" aria-label="Поиск по каталогу" autocomplete="off" enterkeyhint="search"><button type="button" class="iconbtn" id="qClose" aria-label="Закрыть поиск">✕</button></div>
+      <div class="row topics" role="group" aria-label="Что тренируем" id="topics"></div>
+      <div class="soundswrap" id="soundsWrap" hidden><span class="flabel">Звук</span><div class="row sub" role="group" aria-label="Звук" id="sounds"></div></div>
+      <div class="row extra" id="extraRow">
+        <div class="fgroup"><span class="flabel">Цена</span><div class="seg2" role="group" aria-label="Цена" id="priceSeg">
+          <button type="button" class="pill" data-price="free" aria-pressed="false">Бесплатно</button>
+          <button type="button" class="pill" data-price="paid" aria-pressed="false">Платно</button>
+        </div>
+        </div><div class="fgroup"><span class="flabel">Формат</span><div class="seg2" role="group" aria-label="Формат" id="fmtSeg">
+          <button type="button" class="pill" data-fmt="browser" aria-pressed="false">Браузер</button>
+          <button type="button" class="pill" data-fmt="ppt" aria-pressed="false">PowerPoint</button>
+          <button type="button" class="pill" data-fmt="sheet" aria-pressed="false">Рабочие листы</button>
+        </div>
+        </div><div class="fgroup"><span class="flabel">Автор</span><div class="seg2" role="group" aria-label="Автор" id="brandSeg">
+          <button type="button" class="pill" data-brand="own" aria-pressed="false">@polliafania</button>
+          <button type="button" class="pill" data-brand="logos" aria-pressed="false" id="logosChip">@logos</button>
+        </div></div>
+        <button type="button" class="reset" id="resetF" hidden>Сбросить всё</button>
+      </div>
+    </div>
+    <div id="sections"></div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="about">
+      <div class="photo" id="aboutPhoto"><img src="about-me.webp" alt="Автор игр, логопед" style="object-position:50% 20%"></div>
+      <div>
+        <span class="label">Обо мне</span>
+        <h2>Логопед, который делает игры</h2>
+        <p>Я практикующий логопед. Когда на занятиях мне не хватало ярких и удобных пособий, я начала делать их сама. Так появились браузерные и 3D-игры, игры в PowerPoint и рабочие листы.</p>
+        <p>Каждую игру я сначала проверяю на своих занятиях. Речевой материал подбираю вручную, а механику продумываю так, чтобы ребёнку хотелось играть, а логопеду было удобно вести занятие и онлайн, и в кабинете.</p>
+        <p>Часть материалов мы создаём вместе с коллегой и подругой <b>@amarynnis</b> под брендом <b>@logos</b>. Новые игры я выкладываю в телеграм-канале <b>@polliafania</b>.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div><h2>Есть вопрос по игре?<br>Напишите мне</h2></div>
+    <div>
+      <span class="label">Telegram</span>
+      <div class="contact-line"><b>@polliafan</b><button class="mini" type="button" data-copy="@polliafan">Копировать</button></div>
+      <div class="contact-line"><a href="https://t.me/polliafan" target="_blank" rel="noopener">Открыть чат</a></div>
+    </div>
+    <div>
+      <span class="label">Телефон (Telegram)</span>
+      <div class="contact-line"><b>+7 923 124-00-38</b><button class="mini" type="button" data-copy="+79231240038">Копировать</button></div>
+      <div class="contact-line"><span class="hint">Канал с играми: @polliafania</span></div>
+    </div>
+  </footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" hidden></div>
+<div class="player" id="player" hidden><div class="player-bar"><b id="playerTitle"></b><a id="playerNew" href="#" target="_blank" rel="noopener" class="mini">Открыть в новой вкладке</a><button type="button" class="close" id="playerClose" aria-label="Закрыть игру">×</button></div><iframe id="playerFrame" title="Игра" allow="fullscreen; autoplay"></iframe></div>
+<div class="cartbar" id="cartbar" hidden><span id="cbText"></span><button type="button" class="big-btn" id="cbOpen">Оформить заявку →</button></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Заметки" hidden></aside>
+
+<script src="games.js"></script>
+<script>
+const SETTINGS = window.SETTINGS || {};
+const TINTS = {leaf:'--t-leaf',pink:'--t-pink',blue:'--t-blue',farm:'--t-farm',cave:'--t-cave',planet:'--t-planet',lake:'--t-lake',snow:'--t-snow'};
+const GAMES = (window.GAMES || []).map(g => ({
+  media:[], points:[], tags:[], format:'browser', brand:'own', ...g,
+  tint: TINTS[g.tint] || (String(g.tint||'').startsWith('--') ? g.tint : '--t-blue')
+}));
+const LOGOS = SETTINGS.logosName || '@logos', PARTNER = SETTINGS.logosPartner || '@amarynnis';
+const TG = SETTINGS.telegramUser || 'polliafan', PHONE = SETTINGS.phone || '+79231240038';
+const $ = s => document.querySelector(s);
+const getLink = g => g.price === 0 && !!String(g.link || '').trim();
+const fmt = p => p === 0 ? 'Бесплатно' : p == null ? 'Цена уточняется' : p.toLocaleString('ru-RU') + ' ₽';
+
+let notes = [];
+try { notes = JSON.parse(localStorage.getItem('lg-notes') || '[]').filter(id => GAMES.some(g => g.id === id)); } catch(e) {}
+const saveNotes = () => { try { localStorage.setItem('lg-notes', JSON.stringify(notes)); } catch(e) {} };
+const TOPICS = [
+  {id:'artic',  name:'Артикуляция'},
+  {id:'sounds', name:'Звуки'},
+  {id:'slog',   name:'Слоговая структура', short:'Слоговая'},
+  {id:'speech', name:'Связная речь и грамматика', short:'Связная речь'},
+  {id:'mind',   name:'Внимание и память', short:'Внимание'},
+  {id:'diag',   name:'Диагностика'},
+  {id:'other',  name:'Другое'},
+  {id:'all',    name:'Все'}
+];
+const SOUND_ORDER = ['С','З','Ц','Ш','Ж','Ч','Щ','Л','Ль','Р','Рь','К','Н','В','Й'];
+const has = (g,t) => g.tags.includes(t);
+function topicOf(g){
+  if (g.topic) return g.topic;
+  if (has(g,'Диагностика')) return 'diag';
+  if (g.artic) return 'artic';
+  if (g.tags.some(t=>/^Звук /.test(t))) return 'sounds';
+  if (has(g,'Слоговая структура')) return 'slog';
+  if (['Связная речь','Небылицы','Рассказ','Предлоги','Грамматика'].some(t=>has(g,t))) return 'speech';
+  if (['Внимание','Память','Логика'].some(t=>has(g,t))) return 'mind';
+  return 'other';
+}
+const soundsOf = g => g.tags.filter(t=>/^Звук /.test(t)).map(t=>t.slice(5));
+GAMES.forEach(g => { g._topic = topicOf(g); g._sounds = soundsOf(g); g._topics = new Set([g._topic, ...(g._sounds.length?['sounds']:[]), ...(g.artic?['artic']:[])]); g._text = (g.title+' '+g.sub+' '+g.tags.join(' ')+' '+g.desc+' '+(g.points||[]).join(' ')).toLowerCase().replace(/ё/g,'е'); });
+const F = { topic:'all', sound:null, price:null, fmt:null, brand:null, q:'' };
+
+function coverHTML(g, inModal){
+  const m = g.media[0];
+  if (m && m.type === 'img') return `<img src="${m.src}" alt="${g.title}">`;
+  if (m && m.type === 'video') return (!inModal && m.poster) ? `<img src="${m.poster}" alt="${g.title}">` : `<video src="${m.src}" ${m.poster?`poster="${m.poster}"`:''} muted loop playsinline ${inModal?'controls':''}></video>`;
+  return `<canvas class="art" data-art="${g.id}"></canvas><div class="glyph"><small>${g.sub}</small>${g.glyph}</div>`;
+}
+
+function cardHTML(g){
+    const on = notes.includes(g.id);
+    const free = g.price === 0;
+    return `<article class="card" data-id="${g.id}" style="--tint:var(${g.tint})">
+      <button class="cover" type="button" data-open="${g.id}" aria-label="Подробнее: ${g.title}">
+        ${coverHTML(g)}
+        <span class="badges">${g.format==='ppt'?'<span class="badge">PowerPoint</span>':''}${g.format==='sheet'?'<span class="badge">Рабочий лист</span>':''}${g.is3d?'<span class="badge">3D</span>':''}${g.brand==='logos'?`<span class="badge">${LOGOS}</span>`:''}${free?'<span class="badge free">Бесплатно</span>':''}</span>
+        ${g.media.some(m=>m.type==='video')?'<span class="play-ico" aria-hidden="true">▶</span>':''}
+      </button>
+      <div class="card-body">
+        <h3>${g.title}</h3><div class="sub">${g.sub}</div>
+      </div>
+      <div class="card-foot">
+        <div class="price${free?' is-free':''}">${fmt(g.price)}</div>
+        <div class="acts">
+          <button class="act ghost" type="button" data-open="${g.id}">Подробнее</button>
+          ${getLink(g) ? freeBtn(g,'act get') : `<button class="act add${on?' on':''}" type="button" data-add="${g.id}" aria-pressed="${on}">${on?'✓ В заметках':'＋ В заметки'}</button>`}
+        </div>
+      </div>
+    </article>`;
+}
+function passSide(g, skip){
+  if (skip!=='price' && F.price==='free' && g.price!==0) return false;
+  if (skip!=='price' && F.price==='paid' && g.price===0) return false;
+  if (skip!=='fmt' && F.fmt && g.format!==F.fmt) return false;
+  if (skip!=='brand' && F.brand && g.brand!==F.brand) return false;
+  if (F.q) { const w = F.q.toLowerCase().replace(/ё/g,'е').split(/\s+/).filter(Boolean); if (!w.every(x=>g._text.includes(x))) return false; }
+  return true;
+}
+function passTopic(g){
+  if (F.topic!=='all' && !g._topics.has(F.topic)) return false;
+  if (F.sound && !g._sounds.includes(F.sound)) return false;
+  return true;
+}
+function renderNav(){
+  const base = GAMES.filter(g=>passSide(g));
+  const SVGQ = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.6-4.6"/></svg>';
+  const SVGF = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M7 12h10M10 17h4"/></svg>';
+  const fc = [F.price,F.fmt,F.brand].filter(Boolean).length;
+  const open = $('#navbar').classList.contains('open');
+  const icons = `<button type="button" class="iconbtn${F.q?' on':''}" id="qBtn" aria-label="Поиск">${SVGQ}</button><button type="button" class="iconbtn ftoggle${fc||open?' on':''}" id="ftoggle" aria-label="Фильтры" aria-expanded="${open}">${SVGF}${fc?`<span class="badge-n">${fc}</span>`:''}</button>`;
+  $('#topics').innerHTML = icons + TOPICS.map(t => {
+    const n = t.id==='all' ? base.length : base.filter(g=>g._topics.has(t.id)).length;
+    if (t.id!=='all' && !GAMES.some(g=>g._topic===t.id)) return '';
+    return `<button class="chip" type="button" data-topic="${t.id}" aria-pressed="${F.topic===t.id}" ${n?'':'disabled style="opacity:.45"'}>${t.short && innerWidth<=700 ? t.short : t.name}<span class="n">${n}</span></button>`;
+  }).join('');
+  const showSounds = F.topic==='sounds' || F.topic==='all';
+  const pool = base.filter(g=>F.topic==='all'||g._topics.has(F.topic));
+  const list = SOUND_ORDER.filter(x=>pool.some(g=>g._sounds.includes(x)));
+  const extra = [...new Set(pool.flatMap(g=>g._sounds))].filter(x=>!SOUND_ORDER.includes(x));
+  const all = [...list, ...extra];
+  $('#soundsWrap').hidden = !(showSounds && all.length && F.topic==='sounds');
+  $('#sounds').innerHTML = all.map(x=>`<button class="chip" type="button" data-sound="${x}" aria-pressed="${F.sound===x}">${x}</button>`).join('') + `<button class="chip" type="button" data-sound="" aria-pressed="${!F.sound}">Все звуки</button>`;
+  document.querySelectorAll('[data-price]').forEach(b=>b.setAttribute('aria-pressed', F.price===b.dataset.price));
+  document.querySelectorAll('[data-fmt]').forEach(b=>b.setAttribute('aria-pressed', F.fmt===b.dataset.fmt));
+  document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed', F.brand===b.dataset.brand));
+  $('#resetF').hidden = !(F.topic!=='all' || F.sound || F.price || F.fmt || F.brand || F.q);
+
+}
+function render(){
+  renderNav();
+  const list = GAMES.filter(g=>passSide(g) && passTopic(g));
+  $('#catCount').textContent = list.length ? `Показано: ${list.length} из ${GAMES.length}` : '';
+  let html = '';
+  if (!list.length) html = '<p class="empty">Ничего не нашлось. Попробуйте другой запрос или <button class="reset" type="button" data-reset>сбросьте фильтры</button>.</p>';
+  else if (F.topic==='all' && !F.q) {
+    for (const t of TOPICS) {
+      const items = list.filter(g=>g._topic===t.id); if (!items.length) continue;
+      const lim = 6;
+      html += `<section class="sec" id="sec-${t.id}"><div class="sec-head"><h2>${t.name}</h2>${items.length>lim?`<button class="more" type="button" data-topic="${t.id}">Все ${items.length} →</button>`:''}</div><div class="grid">${items.slice(0,lim).map(cardHTML).join('')}</div></section>`;
+    }
+  } else {
+    html = `<div class="grid">${list.map(cardHTML).join('')}</div>`;
+  }
+  $('#sections').innerHTML = html;
+  $('#notesCount').textContent = notes.length;
+  renderBar();
+  drawArt();
+}
+function setF(patch, scroll){
+  Object.assign(F, patch);
+  if (patch.topic && patch.topic!=='sounds') F.sound = null;
+  render();
+  if (scroll) { const y = $('#catalog').getBoundingClientRect().top + scrollY - 8; if (scrollY > y) scrollTo({top:y, behavior:'smooth'}); }
+}
+
+/* Мягкие декоративные обложки, пока нет настоящих фото */
+function drawArt(){
+  document.querySelectorAll('canvas[data-art]').forEach(c => {
+    const r = c.getBoundingClientRect(); if (!r.width) return;
+    const d = window.devicePixelRatio || 1; c.width = r.width*d; c.height = r.height*d;
+    const x = c.getContext('2d'); x.scale(d,d);
+    const w = r.width, h = r.height, id = c.dataset.art;
+    let seed = [...id].reduce((a,ch)=>a+ch.charCodeAt(0),0);
+    const rnd = () => (seed = (seed*9301+49297)%233280)/233280;
+    x.fillStyle = 'rgba(255,255,255,.45)';
+    const shapes = {cave:'mush', farm:'hill', planet:'planet', lake:'wave', snow:'snow', pegas:'star', race:'road', leaves:'leaf'}[id];
+    if (shapes==='planet'){ x.beginPath(); x.arc(w*.72,h*.45,h*.32,0,7); x.fill(); x.fillStyle='rgba(255,255,255,.3)'; x.beginPath(); x.ellipse(w*.72,h*.45,h*.5,h*.1,-.3,0,7); x.fill(); }
+    else if (shapes==='hill'||shapes==='wave'){ for(let k=0;k<3;k++){ x.beginPath(); x.moveTo(0,h); for(let i=0;i<=w;i+=8) x.lineTo(i,h*(.55+k*.13)+Math.sin(i/(shapes==='wave'?28:70)+k)*h*.05); x.lineTo(w,h); x.fill(); } }
+    else if (shapes==='road'){ x.lineWidth=h*.12; x.strokeStyle='rgba(255,255,255,.5)'; x.beginPath(); x.moveTo(w*.35,h); x.bezierCurveTo(w*.6,h*.6,w*.4,h*.35,w*.95,h*.1); x.stroke(); }
+    else for(let i=0;i<14;i++){
+      const px=w*(.35+rnd()*.62), py=h*rnd(), s=6+rnd()*(shapes==='snow'?6:16);
+      x.beginPath();
+      if(shapes==='leaf'){ x.ellipse(px,py,s,s*.55,rnd()*3,0,7); }
+      else if(shapes==='mush'){ x.arc(px,py,s*.8,Math.PI,0); x.rect(px-s*.2,py,s*.4,s*.8); }
+      else if(shapes==='star'){ for(let k=0;k<10;k++){const a=k*Math.PI/5, rr=k%2?s*.4:s; x.lineTo(px+Math.cos(a)*rr,py+Math.sin(a)*rr);} }
+      else x.arc(px,py,s*.5,0,7);
+      x.fill();
+    }
+  });
+}
+
+/* Модальное окно игры */
+let lastFocus = null;
+function openGame(id){
+  const g = GAMES.find(x=>x.id===id); if(!g) return;
+  lastFocus = document.activeElement;
+  const m = $('#modal'); m.style.setProperty('--tint', `var(${g.tint})`);
+  const on = notes.includes(g.id);
+  m.innerHTML = `<button class="close" type="button" data-close aria-label="Закрыть">×</button>
+    <div class="gallery"><div class="main" id="gMain">${mediaFull(g,0)}</div>
+      ${g.media.length>1?`<div class="thumbs">${g.media.map((md,i)=>`<button type="button" data-thumb="${i}" aria-current="${i===0}" aria-label="Медиа ${i+1}">${md.type==='img'?`<img src="${md.src}" alt="">`:(md.poster?`<img src="${md.poster}" alt="">`:'▶')}</button>`).join('')}</div>`:''}
+    </div>
+    <div class="m-info">
+      <span class="label">${g.sub}</span>
+      <h2 id="mTitle">${g.title}</h2>
+      <p class="hint">${g.format==='ppt'?'Игра в PowerPoint':g.format==='sheet'?'Рабочий лист для печати, PDF':'Браузерная игра'}</p>${g.brand==='logos'?`<p class="logos-note">${g.format==='sheet'?'Материал':'Игра'} бренда <b>${LOGOS}</b>. Мы создали ${g.format==='sheet'?'его':'её'} вместе с моей коллегой и подругой <b>${PARTNER}</b>.</p>`:''}
+      <div class="tags">${g.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+      <p style="margin:0">${g.desc}</p>
+      ${g.points.length?`<ul>${g.points.map(p=>`<li>${p}</li>`).join('')}</ul>`:''}
+      <div class="price" style="font-size:20px">${fmt(g.price)}</div>
+      ${getLink(g) ? freeBtn(g,'big-btn get-big') + `<p class="hint">Бесплатно, заявка не нужна.</p>` : `<button class="big-btn${on?' ghost':''}" type="button" data-add="${g.id}">${on?'Убрать из заметок':'Добавить в заметки'}</button>`}
+      <button class="big-btn ghost close-row" type="button" data-close>Закрыть</button>
+    </div>`;
+  m._game = g; m.scrollTop = 0;
+  $('#scrim').hidden = false; m.hidden = false; drawArt(); renderBar();
+  m.scrollTop = 0; m.querySelector('.close').focus({preventScroll:true}); requestAnimationFrame(()=>{ m.scrollTop = 0; });
+}
+function mediaFull(g,i){
+  const md = g.media[i];
+  if(!md) return coverHTML(g,true);
+  return md.type==='video' ? `<video src="${md.src}" ${md.poster?`poster="${md.poster}"`:''} controls playsinline></video>` : `<img src="${md.src}" alt="${g.title}">`;
+}
+
+/* Заметки */
+function openNotes(){ lastFocus = document.activeElement; renderNotes(); $('#scrim').hidden=false; $('#drawer').hidden=false; $('#drawer').querySelector('.close')?.focus(); }
+function renderNotes(stage, fallback){
+  const d = $('#drawer'); const items = notes.map(id=>GAMES.find(g=>g.id===id));
+  const sum = items.reduce((a,g)=>a+(g.price||0),0), unknown = items.some(g=>g.price==null);
+  let draft = {}; try { draft = JSON.parse(localStorage.getItem('lg-form')||'{}'); } catch(e){}
+  if (stage === 'done') {
+    d.innerHTML = `<button class="close" type="button" data-close aria-label="Закрыть">×</button>
+      <span class="label">Заявка отправлена</span><h2>Спасибо!</h2>
+      <p>Ваша заявка уже у меня в Telegram. Я напишу вам по контакту, который вы указали, и пришлю игры.</p>
+      <p class="hint">Если ответ не пришёл в течение дня, напишите мне сами: <b>@${TG}</b> или <b>+7 923 124-00-38</b>.</p>
+      <button class="big-btn ghost" type="button" data-close>Вернуться в каталог</button>`;
+    return;
+  }
+  if (stage === 'sent') {
+    const msg = buildMsg(draft);
+    d.innerHTML = `<button class="close" type="button" data-close aria-label="Закрыть">×</button>
+      <span class="label">Заявка готова</span><h2>Осталось отправить</h2>
+      ${fallback?'<p class="err">Не получилось отправить заявку автоматически. Пожалуйста, отправьте её вручную.</p>':''}
+      <p class="hint">Скопируйте сообщение, откройте чат со мной в Telegram и вставьте его. Если ссылка не открылась, найдите в Telegram <b>@${TG}</b> или номер <b>+7 923 124-00-38</b>.</p>
+      <div class="msg" id="msgText">${esc(msg)}</div>
+      <div class="send-row">
+        <button class="big-btn" type="button" id="copyMsg">Скопировать сообщение</button>
+        <a class="big-btn ghost" href="https://t.me/${TG}" target="_blank" rel="noopener">Открыть чат @${TG}</a>
+        <a class="big-btn ghost" href="https://t.me/${PHONE}" target="_blank" rel="noopener">Написать по номеру телефона</a>
+      </div>
+      <button class="mini" type="button" id="backForm" style="align-self:flex-start">← Вернуться к форме</button>`;
+    return;
+  }
+  d.innerHTML = `<button class="close" type="button" data-close aria-label="Закрыть">×</button>
+    <span class="label">Мои заметки</span><h2>Хочу получить</h2>
+    ${items.length ? items.map(g=>`<div class="n-item" style="--tint:var(${g.tint})"><div class="sw">${g.media[0]&&g.media[0].type==='img'?`<img src="${g.media[0].src}" alt="">`:g.glyph}</div><div class="t">${g.title}<small>${fmt(g.price)}</small></div><button class="rm" type="button" data-add="${g.id}" aria-label="Убрать ${g.title}">×</button></div>`).join('')
+      + `<div class="total"><span>Итого</span><span>${sum.toLocaleString('ru-RU')} ₽${unknown?' + уточнить':''}</span></div>`
+      : '<p class="hint">Здесь пока пусто. Нажмите «+» на карточке игры, чтобы добавить её в заметки.</p>'}
+    ${items.length ? `<form id="orderForm" novalidate>
+      <div class="field"><label for="fName">Ваше имя</label><input id="fName" name="name" autocomplete="name" value="${esc(draft.name||'')}" placeholder="Например, Анна"></div>
+      <div class="field"><label>Кто вы</label><div class="seg">
+        <label><input type="radio" name="role" value="Логопед" ${draft.role!=='Родитель'?'checked':''}> Логопед</label>
+        <label><input type="radio" name="role" value="Родитель" ${draft.role==='Родитель'?'checked':''}> Родитель</label></div></div>
+      <div class="field"><label for="fContact">Ваш Telegram или телефон</label><input id="fContact" name="contact" value="${esc(draft.contact||'')}" placeholder="@username или +7…"></div>
+      <div class="field"><label for="fComment">Комментарий</label><textarea id="fComment" name="comment" placeholder="Вопрос или пожелание (необязательно)">${esc(draft.comment||'')}</textarea></div>
+      <p class="err" id="fErr" hidden></p>
+      <button class="big-btn" type="submit" id="sendBtn">Отправить заявку</button>
+    </form>` : ''}`;
+}
+function buildMsg(f){
+  const items = notes.map(id=>GAMES.find(g=>g.id===id));
+  const sum = items.reduce((a,g)=>a+(g.price||0),0);
+  return `Здравствуйте! Хочу заказать игры:\n${items.map((g,i)=>`${i+1}. ${g.title}${g.format==='ppt'?' (PowerPoint)':''}${g.brand==='logos'?` [${LOGOS}]`:''} — ${fmt(g.price)}`).join('\n')}\nИтого: ${sum.toLocaleString('ru-RU')} ₽${items.some(g=>g.price==null)?' (часть цен уточнить)':''}\n\nИмя: ${f.name}\nЯ: ${f.role}\nСвязь: ${f.contact}${f.comment?`\nКомментарий: ${f.comment}`:''}`;
+}
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function toggle(id){
+  const adding = !notes.includes(id);
+  notes = adding ? [...notes, id] : notes.filter(x=>x!==id);
+  saveNotes(); render();
+  if ($('#drawer').hidden) flToast(adding ? 'Добавлено в заметки' : 'Убрано из заметок', adding);
+  if(!$('#modal').hidden) openGame(id);
+  if(!$('#drawer').hidden) renderNotes();
+}
+function freeBtn(g, cls){
+  const label = cls==='act get' ? (/\.html?($|[?#])/i.test(g.link) ? '▶ Играть' : '↓ Скачать') : (/\.html?($|[?#])/i.test(g.link) ? 'Играть бесплатно' : g.format==='sheet' ? 'Скачать PDF бесплатно' : 'Скачать игру бесплатно');
+  if (/\.html?($|[?#])/i.test(g.link) && !/^https?:/i.test(g.link)) return `<button class="${cls}" type="button" data-play="${g.id}">${label}</button>`;
+  return `<a class="${cls}" href="${g.link}" target="_blank" rel="noopener">${label}</a>`;
+}
+function openPlayer(id){
+  const g = GAMES.find(x=>x.id===id); if(!g) return;
+  closeAll();
+  $('#playerTitle').textContent = g.title;
+  $('#playerNew').href = g.link;
+  $('#playerFrame').src = g.link;
+  $('#player').hidden = false; document.body.style.overflow='hidden';
+}
+function closePlayer(){ $('#player').hidden = true; $('#playerFrame').src = 'about:blank'; document.body.style.overflow=''; }
+function flToast(t, withOpen){ let el=$('#toast'); if(!el){ el=document.createElement('div'); el.id='toast'; el.className='toast'; el.setAttribute('role','status'); document.body.appendChild(el);} el.innerHTML = `<span></span>${withOpen?'<button type="button" class="toast-btn" id="toastOpen">Открыть</button>':''}`; el.firstChild.textContent=t; el.hidden=false; clearTimeout(el._t); el._t=setTimeout(()=>el.hidden=true,3000); }
+function renderBar(){
+  const b=$('#cartbar'); if(!b) return;
+  const items = notes.map(id=>GAMES.find(g=>g.id===id)).filter(Boolean);
+  const sum = items.reduce((a,g)=>a+(g.price||0),0);
+  b.hidden = !items.length || !$('#drawer').hidden || !$('#modal').hidden;
+  document.body.classList.toggle('has-bar', !b.hidden);
+  const word = n => n%10===1&&n%100!==11?'игра':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?'игры':'игр');
+  $('#cbText').innerHTML = `<b>${items.length} ${word(items.length)}</b> в заметках${sum?` · ${sum.toLocaleString('ru-RU')} ₽`:''}`;
+}
+function closeAll(){ $('#scrim').hidden=true; $('#modal').hidden=true; $('#drawer').hidden=true; $('#modal').innerHTML=''; lastFocus?.focus?.(); renderBar(); }
+
+async function copy(text, btn){
+  const old = btn.textContent;
+  try { await navigator.clipboard.writeText(text); btn.textContent = 'Скопировано'; }
+  catch(e){ const el = $('#msgText'); if(el){ const r=document.createRange(); r.selectNodeContents(el); const s=getSelection(); s.removeAllRanges(); s.addRange(r);} btn.textContent = 'Выделено, нажмите «Копировать»'; }
+  setTimeout(()=>btn.textContent=old, 2200);
+}
+
+let DL = null;
+try { window.claude?.use?.('downloads')?.then(x => { DL = x; }).catch(()=>{}); } catch(e) {}
+document.addEventListener('click', async e => {
+  const fl = e.target.closest('a.get, a.get-big');
+  if (fl && DL && !/^https?:/i.test(fl.getAttribute('href'))) {
+    e.preventDefault();
+    const href = fl.getAttribute('href'), name = href.split('/').pop().replace(/\.ppsx$/i, '.pptx');
+    try { const r = await fetch(href); if (!r.ok) throw 0; await DL.save({ filename: name, data: await r.blob() }); }
+    catch(err) { if (!err || !err.code || err.code !== 'declined') flToast('Этот файл можно будет скачать на опубликованном сайте.'); }
+    return;
+  }
+
+  const t = e.target.closest('button,a'); if(!t) { if(e.target.id==='scrim') { closeAll(); return; } const c = e.target.closest('.card[data-id]'); if (c) openGame(c.dataset.id); return; }
+  if (t.dataset.play) { openPlayer(t.dataset.play); return; }
+  if (t.dataset.add) { toggle(t.dataset.add); return; }
+  if (t.dataset.open) { openGame(t.dataset.open); return; }
+  if (t.hasAttribute('data-close')) { closeAll(); return; }
+  if (t.dataset.topic) { setF({topic:t.dataset.topic}, true); return; }
+  if ('sound' in t.dataset) { setF({sound:t.dataset.sound||null}, true); return; }
+  if (t.dataset.price) { setF({price: F.price===t.dataset.price?null:t.dataset.price}, true); return; }
+  if (t.dataset.fmt) { setF({fmt: F.fmt===t.dataset.fmt?null:t.dataset.fmt}, true); return; }
+  if (t.dataset.brand) { setF({brand: F.brand===t.dataset.brand?null:t.dataset.brand}, true); return; }
+  if (t.id==='ftoggle') { const nb=$('#navbar'); nb.classList.toggle('open'); renderNav(); return; }
+  if (t.id==='qBtn') { $('#searchbox').hidden=false; $('#q').focus(); return; }
+  if (t.id==='qClose') { $('#q').value=''; $('#searchbox').hidden=true; if (F.q) setF({q:''}); return; }
+  if (t.id==='resetF' || 'reset' in t.dataset) { $('#q').value=''; $('#searchbox').hidden=true; setF({topic:'all',sound:null,price:null,fmt:null,brand:null,q:''}, true); return; }
+  if (t.dataset.thumb) { const g=$('#modal')._game, i=+t.dataset.thumb; $('#gMain').innerHTML=mediaFull(g,i); $('#modal').querySelectorAll('[data-thumb]').forEach(b=>b.setAttribute('aria-current', b===t)); return; }
+  if (t.dataset.copy) { copy(t.dataset.copy, t); return; }
+  if (t.id==='openNotes' || t.id==='cbOpen' || t.id==='toastOpen') { const tt=$('#toast'); if(tt) tt.hidden=true; openNotes(); renderBar(); return; }
+  if (t.id==='playerClose') { closePlayer(); return; }
+  if (t.id==='copyMsg') { copy($('#msgText').textContent, t); return; }
+  if (t.id==='backForm') { renderNotes(); return; }
+});
+document.addEventListener('submit', e => {
+  if (e.target.id!=='orderForm') return;
+  e.preventDefault();
+  const fd = new FormData(e.target), f = Object.fromEntries(fd.entries());
+  f.name=(f.name||'').trim(); f.contact=(f.contact||'').trim(); f.comment=(f.comment||'').trim();
+  const err = $('#fErr');
+  if(!f.name || !f.contact){ err.textContent='Укажите имя и как с вами связаться, чтобы я могла ответить.'; err.hidden=false; return; }
+  try { localStorage.setItem('lg-form', JSON.stringify(f)); } catch(x){}
+  const btn = $('#sendBtn'); btn.disabled = true; btn.textContent = 'Отправляю…';
+  sendToTelegram(buildMsg(f)).then(ok => {
+    if (ok) { notes = []; saveNotes(); render(); renderNotes('done'); }
+    else renderNotes('sent', !!([].concat(SETTINGS.telegramBotToken||'').join('').length > 20 && SETTINGS.telegramChatId));
+  });
+});
+async function sendToTelegram(text){
+  const t = SETTINGS.telegramBotToken; const token = Array.isArray(t) ? t.join(':') : t; const chat = SETTINGS.telegramChatId;
+  if (!token || token.length < 20 || !chat) return false;
+  try {
+    const ctrl = new AbortController(); const tm = setTimeout(()=>ctrl.abort(), 12000);
+    const r = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method:'POST', body:new URLSearchParams({chat_id:chat, text:'🧩 Новая заявка с сайта\n\n'+text}), signal:ctrl.signal
+    });
+    clearTimeout(tm);
+    const j = await r.json().catch(()=>({}));
+    return !!j.ok;
+  } catch(e) { return false; }
+}
+document.addEventListener('input', e => {
+  const form = e.target.closest('#orderForm'); if(!form) return;
+  try { localStorage.setItem('lg-form', JSON.stringify(Object.fromEntries(new FormData(form).entries()))); } catch(x){}
+});
+document.addEventListener('keydown', e => { if(e.key!=='Escape') return; if(!$('#player').hidden) closePlayer(); else if(!$('#scrim').hidden) closeAll(); });
+$('#scrim').addEventListener('click', closeAll);
+let rt; addEventListener('resize', ()=>{ clearTimeout(rt); rt=setTimeout(drawArt,150); });
+let qt; $('#q').addEventListener('input', e => { clearTimeout(qt); qt = setTimeout(()=>{ const q=e.target.value.trim(); setF(q ? {q, topic:'all', sound:null} : {q}); }, 180); });
+try { const nb=$('#navbar'); new IntersectionObserver(([en])=>nb.classList.toggle('stuck', en.intersectionRatio<1), {threshold:[1], rootMargin:'-1px 0px 0px 0px'}).observe(nb); } catch(e) {}
+let lastY = scrollY;
+addEventListener('scroll', () => {
+  const nb = $('#navbar'), y = scrollY;
+  if (innerWidth > 700 || nb.classList.contains('open') || !$('#searchbox').hidden) { nb.classList.remove('away'); lastY = y; return; }
+  const top = $('#sections').getBoundingClientRect().top + scrollY;
+  if (y > lastY + 8 && y > top) nb.classList.add('away');
+  else if (y < lastY - 8) nb.classList.remove('away');
+  lastY = y;
+}, {passive:true});
+let rw; addEventListener('resize', () => { clearTimeout(rw); rw = setTimeout(renderNav, 150); });
+/* сайт всегда открывается с начала */
+try { history.scrollRestoration = 'manual'; } catch(e) {}
+const toTop = () => { if (!location.hash || location.hash==='#top') scrollTo(0,0); };
+toTop(); addEventListener('load', toTop); addEventListener('pageshow', toTop);
+render();
+try { $('#logosChip').textContent = LOGOS; } catch(e) {}
+</script>
+
+</html>
