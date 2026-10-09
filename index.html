@@ -361,7 +361,7 @@ textarea{min-height:76px;resize:vertical}
 <div class="cartbar" id="cartbar" hidden><span id="cbText"></span><button type="button" class="big-btn" id="cbOpen">Оформить заявку →</button></div>
 <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Заметки" hidden></aside>
 
-<script src="games.js"></script>
+<script>document.write('<script src="games.js?v=' + Date.now() + '"><\/script>');</script>
 <script>
 const SETTINGS = window.SETTINGS || {};
 const TINTS = {leaf:'--t-leaf',pink:'--t-pink',blue:'--t-blue',farm:'--t-farm',cave:'--t-cave',planet:'--t-planet',lake:'--t-lake',snow:'--t-snow'};
