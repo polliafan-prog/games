@@ -125,6 +125,9 @@ nav.menu a:hover{border-color:currentColor}
 .cover .glyph small{font-size:.32em;display:block;font-family:var(--body);font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.8;margin-bottom:6px}
 .badges{position:absolute;top:12px;left:12px;display:flex;gap:6px;flex-wrap:wrap}
 .badge{background:var(--card);border-radius:99px;padding:3px 10px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.badge.soon{background:#7A4FD6;color:#fff}
+.soon-txt{color:#7A4FD6}
+.act.soon-pill{flex:1 1 auto;justify-content:center;background:var(--chip);color:var(--ink-soft);cursor:default}
 .badge.new{background:#E8590C;color:#fff}
 .badge.free{background:var(--ok);color:var(--card)}
 .play-ico{position:absolute;right:12px;bottom:12px;width:36px;height:36px;border-radius:50%;background:var(--card);display:grid;place-items:center}
@@ -377,7 +380,7 @@ const getLink = g => g.price === 0 && !!String(g.link || '').trim();
 const fmt = p => p === 0 ? 'Бесплатно' : p == null ? 'Цена уточняется' : p.toLocaleString('ru-RU') + ' ₽';
 
 let notes = [];
-try { notes = JSON.parse(localStorage.getItem('lg-notes') || '[]').filter(id => GAMES.some(g => g.id === id)); } catch(e) {}
+try { notes = JSON.parse(localStorage.getItem('lg-notes') || '[]').filter(id => GAMES.some(g => g.id === id && !g.soon)); } catch(e) {}
 const saveNotes = () => { try { localStorage.setItem('lg-notes', JSON.stringify(notes)); } catch(e) {} };
 const TOPICS = [
   {id:'new',    name:'Новые'},
@@ -421,17 +424,17 @@ function cardHTML(g){
     return `<article class="card" data-id="${g.id}" style="--tint:var(${g.tint})">
       <button class="cover" type="button" data-open="${g.id}" aria-label="Подробнее: ${g.title}">
         ${coverHTML(g)}
-        <span class="badges">${g.format==='ppt'?'<span class="badge">PowerPoint</span>':''}${g.format==='sheet'?'<span class="badge">Рабочий лист</span>':''}${g.is3d?'<span class="badge">3D</span>':''}${g.brand==='logos'?`<span class="badge">${LOGOS}</span>`:''}${free?'<span class="badge free">Бесплатно</span>':''}${g._new?'<span class="badge new">Новинка</span>':''}</span>
+        <span class="badges">${g.format==='ppt'?'<span class="badge">PowerPoint</span>':''}${g.format==='sheet'?'<span class="badge">Рабочий лист</span>':''}${g.is3d?'<span class="badge">3D</span>':''}${g.brand==='logos'?`<span class="badge">${LOGOS}</span>`:''}${free?'<span class="badge free">Бесплатно</span>':''}${g.soon?'<span class="badge soon">Скоро</span>':(g._new?'<span class="badge new">Новинка</span>':'')}</span>
         ${g.media.some(m=>m.type==='video')?'<span class="play-ico" aria-hidden="true">▶</span>':''}
       </button>
       <div class="card-body">
         <h3>${g.title}</h3><div class="sub">${g.sub}</div>
       </div>
       <div class="card-foot">
-        <div class="price${free?' is-free':''}">${fmt(g.price)}</div>
+        <div class="price${free?' is-free':''}">${g.soon ? '<span class="soon-txt">Скоро выйдет</span>' : fmt(g.price)}</div>
         <div class="acts">
           <button class="act ghost" type="button" data-open="${g.id}">Подробнее</button>
-          ${getLink(g) ? freeBtn(g,'act get') : `<button class="act add${on?' on':''}" type="button" data-add="${g.id}" aria-pressed="${on}">${on?'✓ В заметках':'＋ В заметки'}</button>`}
+          ${g.soon ? `<span class="act soon-pill">⏳ Скоро</span>` : getLink(g) ? freeBtn(g,'act get') : `<button class="act add${on?' on':''}" type="button" data-add="${g.id}" aria-pressed="${on}">${on?'✓ В заметках':'＋ В заметки'}</button>`}
         </div>
       </div>
     </article>`;
@@ -546,7 +549,7 @@ function openGame(id){
       <p style="margin:0">${g.desc}</p>
       ${g.points.length?`<ul>${g.points.map(p=>`<li>${p}</li>`).join('')}</ul>`:''}
       <div class="price" style="font-size:20px">${fmt(g.price)}</div>
-      ${getLink(g) ? freeBtn(g,'big-btn get-big') + `<p class="hint">Бесплатно, заявка не нужна.</p>` : `<button class="big-btn${on?' ghost':''}" type="button" data-add="${g.id}">${on?'Убрать из заметок':'Добавить в заметки'}</button>`}
+      ${g.soon ? `<div class="logos-note">⏳ Игра скоро выйдет. Следите за новостями в телеграм-канале <b>@polliafania</b>.</div>` : getLink(g) ? freeBtn(g,'big-btn get-big') + `<p class="hint">Бесплатно, заявка не нужна.</p>` : `<button class="big-btn${on?' ghost':''}" type="button" data-add="${g.id}">${on?'Убрать из заметок':'Добавить в заметки'}</button>`}
       <button class="big-btn ghost close-row" type="button" data-close>Закрыть</button>
     </div>`;
   m._game = g; m.scrollTop = 0;
