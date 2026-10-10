@@ -125,6 +125,7 @@ nav.menu a:hover{border-color:currentColor}
 .cover .glyph small{font-size:.32em;display:block;font-family:var(--body);font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.8;margin-bottom:6px}
 .badges{position:absolute;top:12px;left:12px;display:flex;gap:6px;flex-wrap:wrap}
 .badge{background:var(--card);border-radius:99px;padding:3px 10px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.badge.new{background:#E8590C;color:#fff}
 .badge.free{background:var(--ok);color:var(--card)}
 .play-ico{position:absolute;right:12px;bottom:12px;width:36px;height:36px;border-radius:50%;background:var(--card);display:grid;place-items:center}
 .card-body{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding-inline:6px}
@@ -319,7 +320,7 @@ textarea{min-height:76px;resize:vertical}
         </div>
         </div><div class="fgroup"><span class="flabel">Автор</span><div class="seg2" role="group" aria-label="Автор" id="brandSeg">
           <button type="button" class="pill" data-brand="own" aria-pressed="false">@polliafania</button>
-          <button type="button" class="pill" data-brand="logos" aria-pressed="false" id="logosChip">@logos</button>
+          <button type="button" class="pill" data-brand="logos" aria-pressed="false" id="logosChip">Logos</button>
         </div></div>
         <button type="button" class="reset" id="resetF" hidden>Сбросить всё</button>
       </div>
@@ -333,9 +334,9 @@ textarea{min-height:76px;resize:vertical}
       <div>
         <span class="label">Обо мне</span>
         <h2>Логопед, который делает игры</h2>
-        <p>Я практикующий логопед. Когда на занятиях мне не хватало ярких и удобных пособий, я начала делать их сама. Так появились браузерные и 3D-игры, игры в PowerPoint и рабочие листы.</p>
-        <p>Каждую игру я сначала проверяю на своих занятиях. Речевой материал подбираю вручную, а механику продумываю так, чтобы ребёнку хотелось играть, а логопеду было удобно вести занятие и онлайн, и в кабинете.</p>
-        <p>Часть материалов мы создаём вместе с коллегой и подругой <b>@amarynnis</b> под брендом <b>@logos</b>. Новые игры я выкладываю в телеграм-канале <b>@polliafania</b>.</p>
+        <p>Практикующий логопед. Яркие и удобные пособия для занятий создаю сама: браузерные и 3D-игры, игры в PowerPoint и рабочие листы.</p>
+        <p>Каждая игра сначала проходит проверку на реальных занятиях. Речевой материал подобран вручную, а механика продумана так, чтобы ребёнку хотелось играть, а логопеду было удобно вести занятие и онлайн, и в кабинете.</p>
+        <p>Часть материалов создана вместе с коллегой <b>@amarynnis</b> под брендом <b>Logos</b>. Новые игры выходят в телеграм-канале <b>@polliafania</b>.</p>
       </div>
     </div>
   </section>
@@ -369,7 +370,7 @@ const GAMES = (window.GAMES || []).map(g => ({
   media:[], points:[], tags:[], format:'browser', brand:'own', ...g,
   tint: TINTS[g.tint] || (String(g.tint||'').startsWith('--') ? g.tint : '--t-blue')
 }));
-const LOGOS = SETTINGS.logosName || '@logos', PARTNER = SETTINGS.logosPartner || '@amarynnis';
+const LOGOS = (SETTINGS.logosName || 'Logos').replace(/^@/,''), PARTNER = SETTINGS.logosPartner || '@amarynnis';
 const TG = SETTINGS.telegramUser || 'polliafan', PHONE = SETTINGS.phone || '+79231240038';
 const $ = s => document.querySelector(s);
 const getLink = g => g.price === 0 && !!String(g.link || '').trim();
@@ -379,6 +380,7 @@ let notes = [];
 try { notes = JSON.parse(localStorage.getItem('lg-notes') || '[]').filter(id => GAMES.some(g => g.id === id)); } catch(e) {}
 const saveNotes = () => { try { localStorage.setItem('lg-notes', JSON.stringify(notes)); } catch(e) {} };
 const TOPICS = [
+  {id:'new',    name:'Новые'},
   {id:'artic',  name:'Артикуляция'},
   {id:'sounds', name:'Звуки'},
   {id:'slog',   name:'Слоговая структура', short:'Слоговая'},
@@ -401,7 +403,9 @@ function topicOf(g){
   return 'other';
 }
 const soundsOf = g => g.tags.filter(t=>/^Звук /.test(t)).map(t=>t.slice(5));
-GAMES.forEach(g => { g._topic = topicOf(g); g._sounds = soundsOf(g); g._topics = new Set([g._topic, ...(g._sounds.length?['sounds']:[]), ...(g.artic?['artic']:[])]); g._text = (g.title+' '+g.sub+' '+g.tags.join(' ')+' '+g.desc+' '+(g.points||[]).join(' ')).toLowerCase().replace(/ё/g,'е'); });
+const NEW_DAYS = Number(SETTINGS.newDays) || 14;
+const isNew = g => { if (!g.added) return false; const d = new Date(g.added + 'T00:00:00'); return !isNaN(d) && (Date.now() - d.getTime()) < NEW_DAYS*864e5; };
+GAMES.forEach(g => { g._topic = topicOf(g); g._sounds = soundsOf(g); g._new = isNew(g); g._topics = new Set([g._topic, ...(g._sounds.length?['sounds']:[]), ...(g.artic?['artic']:[]), ...(g._new?['new']:[])]); g._text = (g.title+' '+g.sub+' '+g.tags.join(' ')+' '+g.desc+' '+(g.points||[]).join(' ')).toLowerCase().replace(/ё/g,'е'); });
 const F = { topic:'all', sound:null, price:null, fmt:null, brand:null, q:'' };
 
 function coverHTML(g, inModal){
@@ -417,7 +421,7 @@ function cardHTML(g){
     return `<article class="card" data-id="${g.id}" style="--tint:var(${g.tint})">
       <button class="cover" type="button" data-open="${g.id}" aria-label="Подробнее: ${g.title}">
         ${coverHTML(g)}
-        <span class="badges">${g.format==='ppt'?'<span class="badge">PowerPoint</span>':''}${g.format==='sheet'?'<span class="badge">Рабочий лист</span>':''}${g.is3d?'<span class="badge">3D</span>':''}${g.brand==='logos'?`<span class="badge">${LOGOS}</span>`:''}${free?'<span class="badge free">Бесплатно</span>':''}</span>
+        <span class="badges">${g.format==='ppt'?'<span class="badge">PowerPoint</span>':''}${g.format==='sheet'?'<span class="badge">Рабочий лист</span>':''}${g.is3d?'<span class="badge">3D</span>':''}${g.brand==='logos'?`<span class="badge">${LOGOS}</span>`:''}${free?'<span class="badge free">Бесплатно</span>':''}${g._new?'<span class="badge new">Новинка</span>':''}</span>
         ${g.media.some(m=>m.type==='video')?'<span class="play-ico" aria-hidden="true">▶</span>':''}
       </button>
       <div class="card-body">
@@ -454,7 +458,7 @@ function renderNav(){
   const icons = `<button type="button" class="iconbtn${F.q?' on':''}" id="qBtn" aria-label="Поиск">${SVGQ}</button><button type="button" class="iconbtn ftoggle${fc||open?' on':''}" id="ftoggle" aria-label="Фильтры" aria-expanded="${open}">${SVGF}${fc?`<span class="badge-n">${fc}</span>`:''}</button>`;
   $('#topics').innerHTML = icons + TOPICS.map(t => {
     const n = t.id==='all' ? base.length : base.filter(g=>g._topics.has(t.id)).length;
-    if (t.id!=='all' && !GAMES.some(g=>g._topic===t.id)) return '';
+    if (t.id!=='all' && !GAMES.some(g=>g._topics.has(t.id))) return '';
     return `<button class="chip" type="button" data-topic="${t.id}" aria-pressed="${F.topic===t.id}" ${n?'':'disabled style="opacity:.45"'}>${t.short && innerWidth<=700 ? t.short : t.name}<span class="n">${n}</span></button>`;
   }).join('');
   const showSounds = F.topic==='sounds' || F.topic==='all';
@@ -478,7 +482,7 @@ function render(){
   if (!list.length) html = '<p class="empty">Ничего не нашлось. Попробуйте другой запрос или <button class="reset" type="button" data-reset>сбросьте фильтры</button>.</p>';
   else if (F.topic==='all' && !F.q) {
     for (const t of TOPICS) {
-      const items = list.filter(g=>g._topic===t.id); if (!items.length) continue;
+      const items = t.id==='new' ? list.filter(g=>g._new).sort((a,b)=>String(b.added).localeCompare(String(a.added))) : list.filter(g=>g._topic===t.id); if (!items.length) continue;
       const lim = 6;
       html += `<section class="sec" id="sec-${t.id}"><div class="sec-head"><h2>${t.name}</h2>${items.length>lim?`<button class="more" type="button" data-topic="${t.id}">Все ${items.length} →</button>`:''}</div><div class="grid">${items.slice(0,lim).map(cardHTML).join('')}</div></section>`;
     }
@@ -537,7 +541,7 @@ function openGame(id){
     <div class="m-info">
       <span class="label">${g.sub}</span>
       <h2 id="mTitle">${g.title}</h2>
-      <p class="hint">${g.format==='ppt'?'Игра в PowerPoint':g.format==='sheet'?'Рабочий лист для печати, PDF':'Браузерная игра'}</p>${g.brand==='logos'?`<p class="logos-note">${g.format==='sheet'?'Материал':'Игра'} бренда <b>${LOGOS}</b>. Мы создали ${g.format==='sheet'?'его':'её'} вместе с моей коллегой и подругой <b>${PARTNER}</b>.</p>`:''}
+      <p class="hint">${g.format==='ppt'?'Игра в PowerPoint':g.format==='sheet'?'Рабочий лист для печати, PDF':'Браузерная игра'}</p>${g.brand==='logos'?`<p class="logos-note">${g.format==='sheet'?'Материал':'Игра'} бренда <b>${LOGOS}</b>. Мы создали ${g.format==='sheet'?'его':'её'} вместе с коллегой <b>${PARTNER}</b>.</p>`:''}
       <div class="tags">${g.tags.map(t=>`<span>${t}</span>`).join('')}</div>
       <p style="margin:0">${g.desc}</p>
       ${g.points.length?`<ul>${g.points.map(p=>`<li>${p}</li>`).join('')}</ul>`:''}
@@ -594,7 +598,7 @@ function renderNotes(stage, fallback){
       <div class="field"><label>Кто вы</label><div class="seg">
         <label><input type="radio" name="role" value="Логопед" ${draft.role!=='Родитель'?'checked':''}> Логопед</label>
         <label><input type="radio" name="role" value="Родитель" ${draft.role==='Родитель'?'checked':''}> Родитель</label></div></div>
-      <div class="field"><label for="fContact">Ваш Telegram или телефон</label><input id="fContact" name="contact" value="${esc(draft.contact||'')}" placeholder="@username или +7…"></div>
+      <div class="field"><label for="fContact">Telegram или номер телефона</label><input id="fContact" name="contact" value="${esc(draft.contact||'')}" placeholder="@username или +7 900 000-00-00" autocomplete="tel"><span class="hint">Если нет Telegram, оставьте номер телефона: я напишу или позвоню.</span></div>
       <div class="field"><label for="fComment">Комментарий</label><textarea id="fComment" name="comment" placeholder="Вопрос или пожелание (необязательно)">${esc(draft.comment||'')}</textarea></div>
       <p class="err" id="fErr" hidden></p>
       <button class="big-btn" type="submit" id="sendBtn">Отправить заявку</button>
@@ -687,7 +691,7 @@ document.addEventListener('submit', e => {
   const fd = new FormData(e.target), f = Object.fromEntries(fd.entries());
   f.name=(f.name||'').trim(); f.contact=(f.contact||'').trim(); f.comment=(f.comment||'').trim();
   const err = $('#fErr');
-  if(!f.name || !f.contact){ err.textContent='Укажите имя и как с вами связаться, чтобы я могла ответить.'; err.hidden=false; return; }
+  if(!f.name || !f.contact){ err.textContent='Укажите имя и Telegram или номер телефона, чтобы я могла ответить.'; err.hidden=false; return; }
   try { localStorage.setItem('lg-form', JSON.stringify(f)); } catch(x){}
   const btn = $('#sendBtn'); btn.disabled = true; btn.textContent = 'Отправляю…';
   sendToTelegram(buildMsg(f)).then(ok => {

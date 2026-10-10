@@ -11,7 +11,10 @@ window.SETTINGS = {
   telegramChatId:   '530191393',
 
   // Подпись игр совместного бренда
-  logosName: '@logos',
+  logosName: 'Logos',
+
+  // Сколько дней игра считается новой (раздел «Новые»)
+  newDays: 14,
   logosPartner: '@amarynnis',
 
   // Куда писать покупателю, если автоматическая отправка не сработала
@@ -40,7 +43,8 @@ window.SETTINGS = {
                                           // (например 'igra.html' или 'igra.pptx') или ссылка на Яндекс Диск / Google Диск.
                                           // Тогда вместо «+» появится кнопка «Забрать», и игра откроется сразу, без заявки.
      format: 'browser',                   // 'browser' — браузерная игра, 'ppt' — PowerPoint, 'sheet' — рабочий лист
-     brand: 'own',                        // 'own' — ваша игра, 'logos' — бренд @logos
+     brand: 'own',                        // 'own' — ваша игра, 'logos' — бренд Logos
+     added: '2026-11-01',                 // дата выхода (год-месяц-день): 14 дней игра будет в разделе «Новые»
      is3d: false,                         // true — 3D-игра
      // Раздел каталога выбирается сам по тегам: 'Звук Р' → «Звуки», 'Небылицы' → «Связная речь» и т.д.
      // Чтобы задать вручную: topic: 'artic' | 'sounds' | 'slog' | 'speech' | 'mind' | 'diag'
@@ -58,14 +62,14 @@ window.SETTINGS = {
 window.GAMES = [
   {
     id: 'cave', title: 'Грибная пещера', sub: 'Автоматизация звука Р', glyph: 'Р', tint: 'cave',
-    price: 500, format: 'browser', brand: 'own', is3d: true, artic: false,
+    added: '2026-10-10', price: 500, format: 'browser', brand: 'own', is3d: true, artic: false,
     tags: ['3D', 'Звук Р', 'Слова'],
     desc: 'Герой прыгает по островам в пещере со светящимися грибами и собирает объёмные картинки. Обходите препятствия и называйте слова со звуком Р.',
     points: ['100 слов со звуком Р в начале, середине и конце слова', '20 слов в каждой игре', 'Объёмные 3D-картинки'],
     media: [
+      { type: 'video', src: 'vid-cave.mp4', poster: 'vid-cave-poster.webp' },
       { type: 'img', src: 'cave-play.webp' },
-      { type: 'img', src: 'cave-play2.webp' },
-      { type: 'img', src: 'cave-intro.webp' }
+      { type: 'img', src: 'cave-play2.webp' }
     ]
   },
   {
@@ -83,30 +87,35 @@ window.GAMES = [
   },
   {
     id: 'planet', title: 'Планета слов', sub: 'Слоговая структура, 2 тип', glyph: 'Сл', tint: 'planet',
-    price: 500, format: 'browser', brand: 'own', is3d: true, artic: false,
+    added: '2026-10-10', price: 500, format: 'browser', brand: 'own', is3d: true, artic: false,
     tags: ['3D', 'Слоговая структура'],
     desc: 'Вращайте планету с горами, вулканами и озёрами и находите на ней предметы. Слова трёхсложные из открытых слогов.',
     points: ['Слова 2 типа слоговой структуры', 'Мягкая живописная графика'],
     media: [
       { type: 'img', src: 'planet-play.webp' },
       { type: 'img', src: 'planet-play2.webp' },
+      { type: 'img', src: 'planet-play3.webp' },
       { type: 'img', src: 'planet-intro.webp' }
     ]
   },
   {
     id: 'lake', title: 'Лагерь на Лесном озере', sub: 'Звук Л в связной речи', glyph: 'Л', tint: 'lake',
-    price: 700, format: 'browser', brand: 'own', is3d: true, artic: false,
+    added: '2026-10-10', price: 700, format: 'browser', brand: 'own', is3d: true, artic: false,
     tags: ['3D', 'Звук Л', 'Связная речь'],
     desc: 'Один день в лагере у озера: от утренней прогулки на лодке до вечернего костра. Звук Л закрепляется в естественной речи, без карточек.',
     points: ['Автоматизация Л в связной речи', 'Сюжет от утра до вечера'],
     media: [
+      { type: 'img', src: 'lake-koster.webp' },
+      { type: 'img', src: 'lake-lodka.webp' },
+      { type: 'img', src: 'lake-ozero.webp' },
+      { type: 'img', src: 'lake-lama.webp' },
       { type: 'img', src: 'lake-play.webp' },
       { type: 'img', src: 'lake-intro.webp' }
     ]
   },
   {
     id: 'snow', title: 'Мишка и северное сияние', sub: 'Автоматизация звука Ш', glyph: 'Ш', tint: 'snow',
-    price: 500, format: 'browser', brand: 'own', is3d: true, artic: false,
+    added: '2026-10-10', price: 500, format: 'browser', brand: 'own', is3d: true, artic: false,
     tags: ['3D', 'Звук Ш'],
     desc: 'Медвежонок путешествует по зимнему лесу под северным сиянием и снегопадом, перепрыгивает между островами и собирает слова со звуком Ш.',
     points: ['Слова со звуком Ш', 'Зимний лес и северное сияние'],
@@ -122,8 +131,8 @@ window.GAMES = [
     desc: 'Помогите Пегасу добраться до замка. По пути встречаются упражнения: от простых к сложным. Замок откроется, когда все упражнения выполнены.',
     points: ['22 упражнения, выбирайте любое количество', 'Управление стрелками и кнопками на экране', 'Нежная розовая тема'],
     media: [
+      { type: 'video', src: 'vid-pegas.mp4', poster: 'vid-pegas-poster.webp' },
       { type: 'img', src: 'pegas-play.webp' },
-      { type: 'img', src: 'pegas-intro.webp' },
       { type: 'img', src: 'pegas-pick.webp' }
     ]
   },
@@ -134,8 +143,8 @@ window.GAMES = [
     desc: 'Гоночная машинка едет по лабиринту-трассе к финишу и собирает артикуляционные упражнения. Вариант лабиринта в сине-голубой гамме.',
     points: ['Те же 22 упражнения', 'Финиш открывается после всех упражнений'],
     media: [
+      { type: 'video', src: 'vid-race.mp4', poster: 'vid-race-poster.webp' },
       { type: 'img', src: 'race-play.webp' },
-      { type: 'img', src: 'race-intro.webp' },
       { type: 'img', src: 'race-pick.webp' }
     ]
   },
@@ -146,9 +155,8 @@ window.GAMES = [
     desc: 'Добродушный йети Волли греется у камина в уютном домике и зовёт ребёнка делать гимнастику. Ребёнок нажимает на упражнения в камине и выполняет их.',
     points: ['Тёплая зимняя история с героем', 'Упражнения появляются по нажатию'],
     media: [
-      { type: 'img', src: 'yeti-2.webp' },
-      { type: 'img', src: 'yeti-1.webp' },
-      { type: 'img', src: 'yeti-3.webp' }
+      { type: 'video', src: 'vid-yeti.mp4', poster: 'vid-yeti-poster.webp' },
+      { type: 'img', src: 'yeti-2.webp' }
     ]
   },
   {
@@ -181,6 +189,7 @@ window.GAMES = [
     desc: 'Артикуляционная гимнастика в виде компьютерной игры: ребёнок выбирает персонажа, нажимает на кристаллы и выполняет упражнения. Понравится школьникам.',
     points: ['Два персонажа на выбор', 'Подходит для подростков'],
     media: [
+      { type: 'video', src: 'vid-sims.mp4', poster: 'vid-sims-poster.webp' },
       { type: 'img', src: 'sims-1.webp' }
     ]
   },
@@ -191,9 +200,8 @@ window.GAMES = [
     desc: 'Котики-мемы в чате телефона. Ребёнок нажимает на котика, появляется упражнение, а после выполнения оно исчезает. Есть универсальный слайд для любых заданий.',
     points: ['Жми на котика, и появится упражнение', 'Универсальный слайд для своих заданий'],
     media: [
-      { type: 'img', src: 'koty-1.webp' },
-      { type: 'img', src: 'koty-2.webp' },
-      { type: 'img', src: 'koty-3.webp' }
+      { type: 'video', src: 'vid-koty.mp4', poster: 'vid-koty-poster.webp' },
+      { type: 'img', src: 'koty-1.webp' }
     ]
   },
   {
@@ -203,8 +211,7 @@ window.GAMES = [
     desc: 'Львёнок попал в волшебный лес. Ребёнок нажимает на пузыри, в каждом прячется артикуляционное упражнение.',
     points: ['15 упражнений: заборчик, трубочка, лопатка, иголочка, окошко, часики, качели и другие', 'Нажатие на пузырь открывает упражнение', 'Со звуками'],
     media: [
-      { type: 'img', src: 'les-play.webp' },
-      { type: 'img', src: 'les-cover.webp' },
+      { type: 'video', src: 'vid-les.mp4', poster: 'vid-les-poster.webp' },
       { type: 'img', src: 'les-help.webp' }
     ]
   },
@@ -215,7 +222,7 @@ window.GAMES = [
     desc: 'Уютная комната, в которой спрятаны предметы. Ребёнок находит предмет, он увеличивается и переезжает на плашку поиска, а затем выполняется упражнение.',
     points: ['14 упражнений: заборчик, трубочка, лопатка, иголочка, пончик, часики и другие', 'Поиск предметов развивает внимание'],
     media: [
-      { type: 'img', src: 'komnata-cover.webp' },
+      { type: 'video', src: 'vid-komnata.mp4', poster: 'vid-komnata-poster.webp' },
       { type: 'img', src: 'komnata-help.webp' }
     ]
   },
@@ -237,8 +244,8 @@ window.GAMES = [
     desc: 'Львёнок гуляет по волшебному лесу и передвигается по пузырям. В каждом новом пузыре картинка, а ребёнок различает в словах звуки Ль и Й.',
     points: ['Словарь: лебедь, яблоко, пальма, ёж, клюква, яхта, лимон, яма, олень, юла, лента, юрта, салют, ёлка, пульт', 'Нажатие: клик по экрану или пробел'],
     media: [
+      { type: 'video', src: 'vid-lev-diff.mp4', poster: 'vid-lev-diff-poster.webp' },
       { type: 'img', src: 'lev-diff-1.webp' },
-      { type: 'img', src: 'lev-diff-2.webp' },
       { type: 'img', src: 'lev-diff-3.webp' }
     ]
   },
@@ -272,7 +279,7 @@ window.GAMES = [
     desc: 'Бродилка: мышка шагает по дорожке к большому куску сыра, а ребёнок называет слова со звуком Ш.',
     points: ['Словарь: шина, шипы, шайба, шахматы, шампунь, шумовка, шиповник, петушок, каша, кувшинка, окошко, чашка, кошка, башня, подушка, мошка, душ, ёж и другие'],
     media: [
-      { type: 'img', src: 'myshka-1.webp' },
+      { type: 'video', src: 'vid-myshka.mp4', poster: 'vid-myshka-poster.webp' },
       { type: 'img', src: 'myshka-2.webp' }
     ]
   },
@@ -342,6 +349,7 @@ window.GAMES = [
     desc: 'Шесть картинок про девочку и её собаку на прогулке в городе. Ребёнок составляет рассказ по серии сюжетных картинок.',
     points: ['6 сюжетных картинок'],
     media: [
+      { type: 'video', src: 'vid-rasskaz.mp4', poster: 'vid-rasskaz-poster.webp' },
       { type: 'img', src: 'rasskaz-1.webp' }
     ]
   },
@@ -444,10 +452,9 @@ window.GAMES = [
     desc: 'Рыбка Немо просит помочь добраться до друзей. Ребёнок ходит по клеточкам и проговаривает прямые, обратные слоги, слоги со стечением, а на последнем слайде называет слова.',
     points: ['Слоги: НА–НЫ, АН–ЫН, НТА, МНА, СНА, ЗНА', 'Словарь: носки, ночь, носорог, бананы, малина, ванна, картина, окно, батон, ворон, слон, кран', '5 слайдов'],
     media: [
+      { type: 'video', src: 'vid-nemo.mp4', poster: 'vid-nemo-poster.webp' },
       { type: 'img', src: 'nemo-1.webp' },
-      { type: 'img', src: 'nemo-2.webp' },
-      { type: 'img', src: 'nemo-3.webp' },
-      { type: 'img', src: 'nemo-4.webp' }
+      { type: 'img', src: 'nemo-3.webp' }
     ]
   },
   {
@@ -594,12 +601,16 @@ window.GAMES = [
     price: 2000, format: 'ppt', brand: 'logos', is3d: false, artic: false,
     tags: ['Диагностика', 'PowerPoint'],
     desc: 'Путешествие по карте, где каждая остановка проверяет одну сторону речи. 30 слайдов с подсказками для логопеда на каждом.',
-    points: ['Звукопроизношение, лексика, грамматика', 'Слоговая структура, связная речь, фонематический слух', 'Чтение, предлоги, словообразование, словоизменение'],
+    points: ['30 слайдов-заданий с подсказками для логопеда', 'Звукопроизношение, лексика, грамматика, слоговая структура', 'Связная речь, фонематический слух, чтение, предлоги'],
     media: [
+      { type: 'video', src: 'vid-diagnostika.mp4', poster: 'vid-diagnostika-poster.webp' },
       { type: 'img', src: 'logos-diagnostika-map.webp' },
-      { type: 'img', src: 'logos-diagnostika-1.webp' },
-      { type: 'img', src: 'logos-diagnostika-2.webp' },
-      { type: 'img', src: 'logos-diagnostika-3.webp' }
+      { type: 'img', src: 'logos-diag-sod.webp' },
+      { type: 'img', src: 'logos-diag-leksika.webp' },
+      { type: 'img', src: 'logos-diag-svyaznaya.webp' },
+      { type: 'img', src: 'logos-diag-klassif.webp' },
+      { type: 'img', src: 'logos-diag-chtenie.webp' },
+      { type: 'img', src: 'logos-diag-slog.webp' }
     ]
   },
   {
