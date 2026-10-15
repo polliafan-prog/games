@@ -18,6 +18,10 @@ window.SETTINGS = {
   logosPartner: '@amarynnis',
 
   // Куда писать покупателю, если автоматическая отправка не сработала
+  // Акция: скидка на все платные игры. После даты until скидка исчезнет с сайта сама.
+  // Чтобы выключить раньше — поставьте percent: 0
+  sale: { percent: 20, until: '2026-11-10' },
+
   telegramUser: 'polliafan',
   phone: '+79231240038'
 };
@@ -116,13 +120,30 @@ window.GAMES = [
   },
   {
     id: 'snow', title: 'Мишка и северное сияние', sub: 'Автоматизация звука Ш', glyph: 'Ш', tint: 'snow',
-    soon: true, added: '2026-10-10', price: 500, format: 'browser', brand: 'own', is3d: true, artic: false,
-    tags: ['3D', 'Звук Ш'],
-    desc: 'Медвежонок путешествует по зимнему лесу под северным сиянием и снегопадом, перепрыгивает между островами и собирает слова со звуком Ш.',
-    points: ['Слова со звуком Ш', 'Зимний лес и северное сияние'],
+    added: '2026-10-15', price: 500, format: 'browser', brand: 'own', is3d: true, artic: false,
+    tags: ['3D', 'Звук Ш', 'Слова'],
+    desc: 'Над зимним лесом переливается северное сияние. Медвежонок Мишка в шапке и шарфе ищет светящиеся картинки, а ребёнок называет каждую вслух. До островов на озере Мишка добирается прыжками по льдинам.',
+    points: ['Ш в начале, в середине и в конце слова', '89 слов-картинок, в игре до 20 на выбор', 'Управление стрелками и кнопками на экране'],
     media: [
-      { type: 'img', src: 'snow-play.webp' },
-      { type: 'img', src: 'snow-intro.webp' }
+      { type: 'img', src: 'snow-ozero.webp' },
+      { type: 'img', src: 'snow-slova.webp' },
+      { type: 'img', src: 'snow-les.webp' },
+      { type: 'img', src: 'snow-cover.webp' }
+    ]
+  },
+  {
+    id: 'yarmarka', title: 'Ярмарка в Ромашкино', sub: 'Звук Р в связной речи', glyph: 'Р', tint: 'leaf',
+    soon: true, added: '2026-10-17', price: 0, link: 'yarmarka-romashkino.html', format: 'browser', brand: 'own', is3d: true, artic: false,
+    tags: ['3D', 'Звук Р', 'Связная речь'],
+    desc: 'Ребёнок с Ромой идёт на ярмарку за покупками: говорит с продавцами, прогоняет ворону и катается на карусели до вечернего фейерверка. Звук Р закрепляется во фразах, предложениях и рассказе.',
+    points: ['3 уровня: фраза, предложение, рассказ', 'Пример фразы для взрослого', 'Только твёрдый Р'],
+    media: [
+      { type: 'img', src: 'yarmarka-2.webp' },
+      { type: 'img', src: 'yarmarka-3.webp' },
+      { type: 'img', src: 'yarmarka-5.webp' },
+      { type: 'img', src: 'yarmarka-6.webp' },
+      { type: 'img', src: 'yarmarka-4.webp' },
+      { type: 'img', src: 'yarmarka-1.webp' }
     ]
   },
   {
