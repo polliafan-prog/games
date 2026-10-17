@@ -133,7 +133,7 @@ window.GAMES = [
   },
   {
     id: 'yarmarka', title: 'Ярмарка в Ромашкино', sub: 'Звук Р в связной речи', glyph: 'Р', tint: 'leaf',
-    soon: true, added: '2026-10-17', price: 0, link: 'yarmarka-romashkino.html', format: 'browser', brand: 'own', is3d: true, artic: false,
+    added: '2026-10-18', price: 0, link: 'https://polliafan-prog.github.io/yarmarka-r-v-svyaznoy-rechi/', format: 'browser', brand: 'own', is3d: true, artic: false,
     tags: ['3D', 'Звук Р', 'Связная речь'],
     desc: 'Ребёнок с Ромой идёт на ярмарку за покупками: говорит с продавцами, прогоняет ворону и катается на карусели до вечернего фейерверка. Звук Р закрепляется во фразах, предложениях и рассказе.',
     points: ['3 уровня: фраза, предложение, рассказ', 'Пример фразы для взрослого', 'Только твёрдый Р'],
