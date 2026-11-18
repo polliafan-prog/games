@@ -66,6 +66,20 @@ window.SETTINGS = {
 
 window.GAMES = [
   {
+    id: 'platon', title: 'Платон в замке', sub: 'Звук Л: лексика и грамматика', glyph: 'Л', tint: 'pink',
+    added: '2026-11-18', price: 0, link: 'https://polliafan-prog.github.io/platon-v-zamke/index.html', format: 'browser', brand: 'own', is3d: true, artic: false,
+    tags: ['3D', 'Звук Л', 'Слова', 'Память'],
+    desc: 'Эльфу Платону снится волшебный замок, а в нём спрятана карта цветочных домиков, разорванная на шесть частей. В каждой комнате своё задание: посчитать, найти целое по части, назвать ласково, «один — много», «чего не стало?» и найти одинаковые предметы в волшебных шарах.',
+    points: ['Твёрдый Л в начале, середине и конце слова', '6 комнат — 6 разных заданий', '3, 5 или 8 заданий в комнате'],
+    media: [
+      { type: 'img', src: 'platon-1.webp' },
+      { type: 'img', src: 'platon-2.webp' },
+      { type: 'img', src: 'platon-3.webp' },
+      { type: 'img', src: 'platon-4.webp' },
+      { type: 'img', src: 'platon-5.webp' }
+    ]
+  },
+  {
     id: 'cave', title: 'Грибная пещера', sub: 'Автоматизация звука Р', glyph: 'Р', tint: 'cave',
     added: '2026-10-10', price: 500, format: 'browser', brand: 'own', is3d: true, artic: false,
     tags: ['3D', 'Звук Р', 'Слова'],
