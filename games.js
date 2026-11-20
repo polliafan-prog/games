@@ -66,6 +66,21 @@ window.SETTINGS = {
 
 window.GAMES = [
   {
+    id: 'noch-planeta', title: 'Ночная планета слов', sub: 'Слоговая структура, 4–6 тип', glyph: 'Сл', tint: 'cave',
+    added: '2026-11-20', price: 500, format: 'browser', brand: 'own', is3d: true, artic: false,
+    tags: ['3D', 'Слоговая структура'],
+    desc: 'Ночные планеты под луной. Ребёнок крутит планету пальцем или мышкой, ищет предмет, который она загадывает, и прохлопывает найденное слово по слогам.',
+    points: ['Слова 4, 5 и 6 типов слоговой структуры', 'Найди предмет — прохлопай слово по слогам', 'Набор слов выбираете сами'],
+    media: [
+      { type: 'img', src: 'noch-planeta-1.webp' },
+      { type: 'img', src: 'noch-planeta-2.webp' },
+      { type: 'img', src: 'noch-planeta-3.webp' },
+      { type: 'img', src: 'noch-planeta-4.webp' },
+      { type: 'img', src: 'noch-planeta-5.webp' },
+      { type: 'img', src: 'noch-planeta-6.webp' }
+    ]
+  },
+  {
     id: 'platon', title: 'Платон в замке', sub: 'Звук Л: лексика и грамматика', glyph: 'Л', tint: 'pink',
     added: '2026-11-18', price: 0, link: 'https://polliafan-prog.github.io/platon-v-zamke/index.html', format: 'browser', brand: 'own', is3d: true, artic: false,
     tags: ['3D', 'Звук Л', 'Слова', 'Память'],
